@@ -8,6 +8,7 @@ import { useAccount, useReadContract } from "wagmi";
 import { voteContractData } from "./utils/contract";
 import { Address } from "viem";
 import Candidate from "./components/Candidate";
+import Leader from "./components/Leader";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -51,6 +52,7 @@ function App() {
             {isAdmin && <Route path="/" element={<Candidate />} />}
             {/* <Route path="/" element={<Landing />} /> */}
             <Route path="/vote" element={<Vote />} />
+            <Route path="/result" element={<Leader />} />
           </Routes>
         </div>
         <Footer darkMode={darkMode} />
