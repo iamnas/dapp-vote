@@ -80,6 +80,17 @@ contract Vote {
         return (candidate.name, candidate.voteCount);
     }
 
+    function getAllCandidate() external view returns (Candidate[] memory) {
+        Candidate[] memory result = new Candidate[](candidatesCount);
+
+        for (uint256 i = 1; i <= candidatesCount; i++) {
+            result[i - 1] =
+                Candidate({id: candidates[i].id, name: candidates[i].name, voteCount: candidates[i].voteCount});
+        }
+
+        return result;
+    }
+
     function getLeader() external view returns (string memory leaderName, uint256 highestVotes) {
         uint256 maxVotes = 0;
         uint256 leaderId = 0;
