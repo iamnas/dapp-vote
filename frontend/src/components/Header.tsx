@@ -1,5 +1,6 @@
 import { ConnectKitButton } from "connectkit";
-import { Github, Moon, Sun, CheckSquare } from "lucide-react";
+import { Github, Moon, Sun, CheckSquare, BarChart2 } from "lucide-react";
+import { NavLink } from "react-router"; 
 
 interface HeaderProps {
     darkMode: boolean;
@@ -13,7 +14,7 @@ export default function Header({ darkMode, toggleTheme }: HeaderProps) {
                 <div className="flex justify-between items-center">
 
                     {/* Left: App Logo & Name with improved spacing and responsive typography */}
-                    <div className="flex items-center gap-2 md:gap-3">
+                    <NavLink to="/" className="flex items-center gap-2 md:gap-3">
                         <CheckSquare className={`h-6 w-6 sm:h-7 sm:w-7 ${darkMode ? 'text-green-400' : 'text-green-600'}`} />
                         <div>
                             <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
@@ -22,10 +23,31 @@ export default function Header({ darkMode, toggleTheme }: HeaderProps) {
                             </h1>
                             <p className={`text-xs md:text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Decentralized Voting Platform</p>
                         </div>
-                    </div>
+                    </NavLink>
 
-                    {/* Right: Theme Toggle, GitHub & Wallet Connect */}
+                    {/* Right: Result Link, Theme Toggle, GitHub & Wallet Connect */}
                     <div className="flex items-center gap-2 md:gap-4">
+                        
+                        {/* Results NavLink */}
+                        <NavLink
+                            to="/result"
+                            className={({ isActive }) => `
+                                flex items-center gap-1 px-3 py-2 rounded-lg
+                                transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 
+                                text-sm font-medium
+                                ${isActive 
+                                    ? (darkMode ? 'bg-green-700 text-white' : 'bg-green-600 text-white')
+                                    : (darkMode 
+                                        ? 'bg-green-600 hover:bg-green-500 text-white' 
+                                        : 'bg-green-500 hover:bg-green-600 text-white')
+                                }
+                            `}
+                            aria-label="View voting results"
+                            title="View voting results"
+                        >
+                            <BarChart2 size={16} />
+                            <span className="hidden sm:inline">Results</span>
+                        </NavLink>
                         
                         {/* Theme Toggle with accessibility improvements */}
                         <button

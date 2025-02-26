@@ -31,6 +31,9 @@ export default function Leader({ darkMode }: { darkMode: boolean }) {
         });
       }
     }
+
+    // console.log(isFetching,"isFetching");
+    
   }, [isFetched, data]);
 
   // Handle refresh of data
@@ -49,8 +52,8 @@ export default function Leader({ darkMode }: { darkMode: boolean }) {
               <Trophy className={`${darkMode ? 'text-yellow-300' : 'text-yellow-500'} h-6 w-6`} />
               <h2 className="text-2xl font-bold">Lead Candidate</h2>
             </div>
-            <button 
-              onClick={handleRefresh} 
+            {/* <button 
+            //   onClick={handleRefresh} 
               className={`p-2 rounded-full ${darkMode ? 'hover:bg-gray-600' : 'hover:bg-blue-100'} transition-colors`}
               aria-label="Refresh leader data"
               title="Refresh data"
@@ -64,7 +67,7 @@ export default function Leader({ darkMode }: { darkMode: boolean }) {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
-            </button>
+            </button> */}
           </div>
         </div>
 
